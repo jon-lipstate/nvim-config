@@ -112,11 +112,14 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+  { -- Theme
+    'Shatur/neovim-ayu',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      require('ayu').setup({
+        mirage=true,
+      })
+      vim.cmd.colorscheme 'ayu'
     end,
   },
 
@@ -126,7 +129,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'ayu',
         component_separators = '|',
         section_separators = '',
       },
@@ -443,6 +446,9 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+local lspconfig = require('lspconfig')
+lspconfig.ols.setup({})
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
